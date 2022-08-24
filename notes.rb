@@ -62,17 +62,54 @@
 cars = [
   { make: 'Ford', model: 'focus', year: 2000, mileage: 12344 },
   { make: 'Subarau', model: 'outback', year: 2010, mileage: 34422 },
-  { make: 'Toyota', model: 'prius', year: 2000, mileage: 14222 },
+  { make: 'Toyota', model: 'prius', year: 2000, mileage: 14222 }
 ]
 
-total_mileage = 0
+# total_mileage = 0
 
-cars.each do |car|
-  # puts car
-  # puts "#{car[:make]} #{car[:model]}"
-  # puts car[:make] + " " + car[:model]
-  total_mileage += car[:mileage]
-  # total_mileage = total_mileage + car[:mileage]
+# cars.each do |car|
+#   # puts car
+#   # puts "#{car[:make]} #{car[:model]}"
+#   # puts car[:make] + " " + car[:model]
+#   total_mileage += car[:mileage]
+#   # total_mileage = total_mileage + car[:mileage]
+# end
+
+# puts total_mileage
+
+cars.each_with_index do |car, index|
+  puts "#{index + 1} - #{car[:make]} #{car[:model]}"
+  # if car[:model] == user_input
+  #   cars.delete_at(index)
 end
 
-puts total_mileage
+# delete by index
+puts "What item it is you want to delete?"
+delete_index = gets.strip.to_i
+# vaidations
+
+cars.delete_at(delete_index - 1)
+
+p cars
+
+# delete everything
+cars.clear
+
+p cars
+
+# one way to update is to delete and recreate
+
+# update by attribute
+
+
+cars.each_with_index do |car, index|
+  puts "#{index + 1} - #{car[:make]} #{car[:model]}"
+  # if car[:model] == user_input
+  #   cars.delete_at(index)
+end
+
+puts "What item it is you want to update?"
+update_index = gets.strip.to_i
+
+puts "What is the new make?"
+cars[update_index - 1][:make] = gets.strip
